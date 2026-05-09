@@ -5,3 +5,8 @@ this is my fourth iteration on an nvim config. updated to the latest of nvim usi
 ## Instalation
 
 To install you just clone the repo into your .config folder. I don't know if it works on windows since I exclusively use Linux.
+
+## Todo
+
+[ ] add overtype
+[ ] add bracket duplication
