@@ -9,4 +9,5 @@ To install you just clone the repo into your .config folder. I don't know if it 
 ## Todo
 
 [] add overtype
+
 [] add bracket duplication
