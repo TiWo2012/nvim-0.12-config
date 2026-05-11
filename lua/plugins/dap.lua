@@ -79,7 +79,19 @@ return {
                     request = "launch",
 
                     program = function()
-                        return vim.fn.input("Executable: ", vim.fn.getcwd() .. "/", "file")
+                        local cwd = vim.fn.getcwd()
+
+                        vim.g.dap_last_exec = vim.g.dap_last_exec or {}
+
+                        local default = vim.g.dap_last_exec[cwd] or (cwd .. "/build/app")
+
+                        local input = vim.fn.input("Executable: ", default, "file")
+
+                        local exec = input ~= "" and input or default
+
+                        vim.g.dap_last_exec[cwd] = exec
+
+                        return exec
                     end,
 
                     args = function()
