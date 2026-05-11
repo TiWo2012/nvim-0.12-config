@@ -10,7 +10,7 @@ this is my fourth iteration on an nvim config. updated to the latest of nvim usi
 
 Then launch nvim. once it has started and lazy.nvim is done with installing all the plugins run *:Lazy sync* to update all the plugins.
 
-## Todo
+## To-Do
 
-- [x] add overtype
+- [x] add over type
 - [x] add bracket duplication
