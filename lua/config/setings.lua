@@ -40,3 +40,35 @@ vim.opt.shiftwidth = 4     -- size of an indent
 vim.opt.tabstop = 4        -- how many spaces a tab counts for
 vim.opt.softtabstop = 4    -- backspace + editing behavior
 vim.opt.smartindent = true -- auto-indent new lines
+
+-- Only load this for C or C++ files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp" },
+    callback = function()
+        local dap = require("dap")
+
+        -- LLDB adapter (LLVM/Clang)
+        dap.adapters.lldb = {
+            type = 'executable',
+            command = '/usr/bin/lldb-vscode', -- adjust path to your system
+            name = "lldb"
+        }
+
+        -- Helper function to launch a compiled binary
+        _G.launch_c_program = function()
+            local exe = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            dap.run({
+                type = "lldb",
+                request = "launch",
+                name = "Launch C/C++ Program",
+                program = exe,
+                cwd = vim.fn.getcwd(),
+                stopOnEntry = false,
+                args = {},
+            })
+        end
+
+        -- Optional: Keymap to launch binary (only in C/C++ buffers)
+        vim.keymap.set("n", "<F5>", function() _G.launch_c_program() end, { desc = "Launch C/C++ Program (LLDB)" })
+    end,
+})
