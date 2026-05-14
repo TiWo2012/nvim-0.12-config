@@ -49,3 +49,5 @@ if has_makefile() then
         end,
     })
 end
+
+map("n", "gr", "<CMD>IncRename ", { desc = "rename the current identifier" })

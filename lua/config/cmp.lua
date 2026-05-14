@@ -1,44 +1,44 @@
 local cmp = require("cmp")
-local luasnip = require("luasnip")
+local ls = require("luasnip")
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
+    snippet = {
+        expand = function(args)
+            ls.lsp_expand(args.body)
+        end,
+    },
 
-  mapping = cmp.mapping.preset.insert({
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    mapping = cmp.mapping.preset.insert({
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif ls.expand_or_jumpable() then
+                ls.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
 
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-  }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif ls.jumpable(-1) then
+                ls.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+    }),
 
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-  },
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+    },
 
-  completion = {
-    autocomplete = { "InsertEnter", "TextChanged" },
-  },
+    completion = {
+        autocomplete = { "InsertEnter", "TextChanged" },
+    },
 })
