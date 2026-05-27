@@ -37,7 +37,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- tabstop
 vim.opt.expandtab = true   -- use spaces instead of tabs
-vim.opt.shiftwidth = 4     -- size of an indent
-vim.opt.tabstop = 4        -- how many spaces a tab counts for
-vim.opt.softtabstop = 4    -- backspace + editing behavior
+vim.opt.shiftwidth = 2     -- size of an indent
+vim.opt.tabstop = 2        -- how many spaces a tab counts for
+vim.opt.softtabstop = 2    -- backspace + editing behavior
 vim.opt.smartindent = true -- auto-indent new lines
