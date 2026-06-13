@@ -5,13 +5,13 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 
--- auto-wipe unnamed empty buffers
-vim.api.nvim_create_autocmd("BufAdd", {
+-- auto-wipe unnamed empty buffer on startup
+vim.api.nvim_create_autocmd("UIEnter", {
+  once = true,
   callback = function()
-    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-      if vim.api.nvim_buf_get_name(bufnr) == "" and vim.bo[bufnr].buftype == "" then
-        pcall(vim.api.nvim_buf_delete, bufnr, { force = true })
-      end
+    local bufnr = vim.api.nvim_get_current_buf()
+    if vim.api.nvim_buf_get_name(bufnr) == "" and vim.bo[bufnr].buftype == "" then
+      vim.api.nvim_buf_delete(bufnr, { force = true })
     end
   end,
 })
