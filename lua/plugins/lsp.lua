@@ -11,9 +11,7 @@ return {
         "pyright",
         "ts_ls",
       },
-      automatic_enable = {
-        exclude = { "lua_ls" },
-      },
+      automatic_enable = true,
     },
     dependencies = {
       "mason-org/mason.nvim",

@@ -8,6 +8,23 @@ vim.lsp.config("clangd", {
 vim.lsp.enable("clangd")
 
 -- =========================
+-- lua_ls
+-- =========================
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = { version = "LuaJIT" },
+            telemetry = { enable = false },
+            diagnostics = { globals = { "vim" } },
+            workspace = {
+                checkThirdParty = false,
+            },
+        },
+    },
+})
+
+-- =========================
 -- Diagnostics UI
 -- =========================
 
