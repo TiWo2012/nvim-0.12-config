@@ -9,11 +9,18 @@ vim.lsp.config("clangd", {
 vim.lsp.enable("clangd")
 
 -- =========================
--- lua_ls (register + enable early so lazydev picks it up and sets root_dir)
+-- lua_ls (mason-lspconfig handles enable, lazydev handles library)
 -- =========================
 
 vim.lsp.config("lua_ls", {
     filetypes = { "lua" },
+    root_dir = function(bufnr, on_dir)
+        local path = vim.api.nvim_buf_get_name(bufnr)
+        if path == "" then
+            return
+        end
+        on_dir(vim.fs.root(bufnr, ".git") or vim.fn.fnamemodify(path, ":h"))
+    end,
     settings = {
         Lua = {
             telemetry = { enable = false },
@@ -21,7 +28,6 @@ vim.lsp.config("lua_ls", {
         },
     },
 })
-vim.lsp.enable("lua_ls")
 
 -- =========================
 -- Diagnostics UI
