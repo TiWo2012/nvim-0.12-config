@@ -1,4 +1,5 @@
 require("config.lazy")
+require("config.highlights")
 require("config.lsp")
 require("config.setings")
 require("config.mappings")
