@@ -6,13 +6,22 @@ return {
     "MunifTanjim/nui.nvim",
     "nvim-tree/nvim-web-devicons", -- optional, but recommended
   },
-  lazy = false,                    -- neo-tree will lazily load itself
+  lazy = false, -- neo-tree will lazily load itself
   ---@module 'neo-tree'
   ---@type neotree.Config
   opts = {
-    -- options go here
+    window = {
+      position = "right",
+      width = 30,
+      mappings = {},
+    },
+    filesystem = {
+      filtered_items = {
+        visible = false,
+      },
+    },
   },
   keys = {
-    { "<leader>e", "<cmd> Neotree filesystem reveal right<CR>", desc = "open current file in file tree" }
-  }
+    { "<leader>e", "<cmd> Neotree filesystem reveal right<CR>", desc = "open current file in file tree" },
+  },
 }

@@ -41,4 +41,14 @@ cmp.setup({
     completion = {
         autocomplete = { "InsertEnter", "TextChanged" },
     },
+
+    window = {
+        completion = {
+            border = "rounded",
+            winhighlight = "NormalFloat:Pmenu,CursorLine:PmenuSel",
+        },
+        documentation = {
+            border = "rounded",
+        },
+    },
 })

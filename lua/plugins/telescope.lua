@@ -6,6 +6,23 @@ return {
         -- optional but recommended
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
+    opts = {
+        defaults = {
+            border = true,
+            layout_config = {
+                prompt_position = "top",
+            },
+        },
+        pickers = {
+            find_files = {
+                borderchars = {
+                    prompt = { "─", "│", "─", "│", "┌", "┐", "└", "┘" },
+                    results = { "─", "│", "─", "│", "┌", "┐", "└", "┘" },
+                    preview = { "─", "│", "─", "│", "┌", "┐", "└", "┘" },
+                },
+            },
+        },
+    },
     config = function()
         local builtin = require('telescope.builtin')
 

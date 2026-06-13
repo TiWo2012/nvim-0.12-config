@@ -12,6 +12,11 @@ return {
       end,
       hide_numbers = true,
       autochdir = true,
+      start_in_insert = false,
+
+      float = {
+        border = "rounded",
+      },
 
       -- make it look nicer
       winbar = {
