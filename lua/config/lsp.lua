@@ -21,6 +21,30 @@ vim.lsp.config("clangd", {
 vim.lsp.enable("clangd")
 
 -- =========================
+-- lua_ls (Neovim-aware)
+-- =========================
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = { version = "LuaJIT" },
+            telemetry = { enable = false },
+            completion = { callSnippet = "Replace" },
+            diagnostics = { globals = { "vim" } },
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.fn.stdpath("config"),
+                    vim.fn.stdpath("data") .. "/lazy",
+                    vim.fn.stdpath("data") .. "/lazy/lspconfig",
+                },
+            },
+        },
+    },
+})
+vim.lsp.enable("lua_ls")
+
+-- =========================
 -- Diagnostics UI
 -- =========================
 
