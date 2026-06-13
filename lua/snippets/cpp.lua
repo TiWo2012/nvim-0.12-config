@@ -36,6 +36,18 @@ std::vector<{}> {};
 auto {} = {};
 ]], { i(1, "name"), i(2, "expr") })),
 
+  s("struct", fmt([[
+struct {} {{
+  {}
+}};
+]], { i(1, "Name"), i(0) })),
+
+  s("enum", fmt([[
+enum class {} {{
+  {}
+}};
+]], { i(1, "Name"), i(0) })),
+
   s("range-for", fmt([[
 for (const auto& {} : {}) {{
   {}

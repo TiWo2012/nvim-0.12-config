@@ -61,6 +61,12 @@ typedef struct {} {{
 printf("{}"{});
 ]], { i(1), f(function(_, snip) return snip.env and ", " .. snip.env.TM_SELECTED_TEXT or "" end) })),
 
+  s("enum", fmt([[
+typedef enum {{
+  {}
+}} {};
+]], { i(0), i(1, "name") })),
+
   s("ifdef", fmt([[
 #ifdef {}
 {}
