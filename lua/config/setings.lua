@@ -1,4 +1,5 @@
 -- base settings
+vim.opt.hidden = true
 vim.opt.number = false
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
