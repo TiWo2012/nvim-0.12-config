@@ -13,7 +13,12 @@ return {
     window = {
       position = "right",
       width = 30,
-      mappings = {},
+      mappings = {
+        ["<cr>"] = "open_vsplit",
+        ["<bs>"] = "navigate_up",
+        ["."] = "set_root",
+        ["H"] = "toggle_hidden",
+      },
     },
     filesystem = {
       filtered_items = {

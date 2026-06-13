@@ -33,6 +33,9 @@ vim.api.nvim_create_autocmd("FocusGained", {
     callback = set_relative,
 })
 
+-- splits
+vim.opt.splitright = true
+
 -- Use system clipboard for all yank/delete/paste
 vim.opt.clipboard = "unnamedplus"
 
