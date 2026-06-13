@@ -17,7 +17,7 @@ vim.lsp.config("lua_ls", {
         if path == "" then
             return
         end
-        on_dir(vim.fn.fnamemodify(path, ":h"))
+        on_dir(vim.fs.root(bufnr, ".git") or vim.fn.fnamemodify(path, ":h"))
     end,
     settings = {
         Lua = {
