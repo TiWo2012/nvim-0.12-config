@@ -14,7 +14,7 @@ return {
       position = "right",
       width = 30,
       mappings = {
-        ["<cr>"] = "open_vsplit",
+        ["<cr>"] = "open_tabnew",
         ["<bs>"] = "navigate_up",
         ["."] = "set_root",
         ["H"] = "toggle_hidden",
