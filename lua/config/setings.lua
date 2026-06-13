@@ -5,6 +5,17 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 
+-- auto-wipe unnamed empty buffers
+vim.api.nvim_create_autocmd("BufAdd", {
+  callback = function()
+    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_get_name(bufnr) == "" and vim.bo[bufnr].buftype == "" then
+        pcall(vim.api.nvim_buf_delete, bufnr, { force = true })
+      end
+    end
+  end,
+})
+
 -- helper function
 local function set_relative()
     vim.opt.relativenumber = true

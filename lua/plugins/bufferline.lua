@@ -22,6 +22,11 @@ return {
           separator = true,
         },
       },
+      custom_filter = function(buf_number, bufs)
+        return vim.tbl_filter(function(buf)
+          return vim.fn.bufname(buf.id) ~= ""
+        end, bufs)
+      end,
       hover = {
         enabled = true,
         delay = 100,
