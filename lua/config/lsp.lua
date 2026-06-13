@@ -8,30 +8,6 @@ vim.lsp.config("clangd", {
 vim.lsp.enable("clangd")
 
 -- =========================
--- lua_ls
--- =========================
-
-vim.lsp.config("lua_ls", {
-    root_dir = function(bufnr, on_dir)
-        local path = vim.api.nvim_buf_get_name(bufnr)
-        if path == "" then
-            return
-        end
-        on_dir(vim.fs.root(bufnr, ".git") or vim.fn.fnamemodify(path, ":h"))
-    end,
-    settings = {
-        Lua = {
-            runtime = { version = "LuaJIT" },
-            telemetry = { enable = false },
-            diagnostics = { globals = { "vim" } },
-            workspace = {
-                checkThirdParty = false,
-            },
-        },
-    },
-})
-
--- =========================
 -- Diagnostics UI
 -- =========================
 
