@@ -11,14 +11,12 @@ return {
         "pyright",
         "ts_ls",
       },
-      automatic_enable = true,
+      automatic_enable = {
+        exclude = { "lua_ls" },
+      },
     },
     dependencies = {
       "mason-org/mason.nvim",
-      "neovim/nvim-lspconfig",
     },
-  },
-  {
-    "neovim/nvim-lspconfig",
   },
 }

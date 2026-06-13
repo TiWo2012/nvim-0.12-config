@@ -1,17 +1,4 @@
 -- =========================
--- Mason + LSP setup
--- =========================
-
-require("mason").setup()
-
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "lua_ls",
-    },
-    automatic_enable = true,
-})
-
--- =========================
 -- Clangd (system install)
 -- =========================
 
@@ -19,30 +6,6 @@ vim.lsp.config("clangd", {
     cmd = { "/usr/bin/clangd" },
 })
 vim.lsp.enable("clangd")
-
--- =========================
--- lua_ls (Neovim-aware)
--- =========================
-
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            runtime = { version = "LuaJIT" },
-            telemetry = { enable = false },
-            completion = { callSnippet = "Replace" },
-            diagnostics = { globals = { "vim" } },
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    vim.fn.stdpath("config"),
-                    vim.fn.stdpath("data") .. "/lazy",
-                    vim.fn.stdpath("data") .. "/lazy/lspconfig",
-                },
-            },
-        },
-    },
-})
-vim.lsp.enable("lua_ls")
 
 -- =========================
 -- Diagnostics UI
