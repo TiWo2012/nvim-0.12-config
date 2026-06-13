@@ -23,8 +23,8 @@ return {
         },
       },
       custom_filter = function(buf_number, bufs)
-        return vim.tbl_filter(function(buf)
-          return vim.fn.bufname(buf.id) ~= ""
+        return vim.tbl_filter(function(bufnr)
+          return vim.fn.bufname(bufnr) ~= ""
         end, bufs)
       end,
       hover = {
