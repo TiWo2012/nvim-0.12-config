@@ -4,6 +4,7 @@
 
 vim.lsp.config("clangd", {
     cmd = { "/usr/bin/clangd" },
+    filetypes = { "c", "cpp", "cuda", "objc", "objcpp" },
 })
 vim.lsp.enable("clangd")
 
@@ -12,6 +13,7 @@ vim.lsp.enable("clangd")
 -- =========================
 
 vim.lsp.config("lua_ls", {
+    filetypes = { "lua" },
     root_dir = function(bufnr, on_dir)
         local path = vim.api.nvim_buf_get_name(bufnr)
         if path == "" then
