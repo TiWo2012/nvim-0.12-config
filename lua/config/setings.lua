@@ -44,6 +44,20 @@ vim.api.nvim_create_autocmd("FocusGained", {
     callback = set_relative,
 })
 
+-- highlight trailing whitespace with listchars
+vim.opt.list = true
+vim.opt.listchars:append { trail = "·" }
+
+-- trim trailing whitespace on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+        local save_cursor = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", save_cursor)
+    end,
+})
+
 -- splits
 vim.opt.splitright = true
 

@@ -44,6 +44,8 @@ return {
                 enabled = true,
                 indentscope_color = "",
             },
+            hop = true,
+            todo_comments = true,
         },
     },
     config = function(_, opts)
