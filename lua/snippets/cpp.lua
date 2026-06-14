@@ -15,6 +15,8 @@ return {
 #ifndef {}
 #define {}
 
+#pragma once
+
 {}
 
 #endif /* {} */
