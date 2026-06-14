@@ -5,7 +5,7 @@ return {
   opts = {
     options = {
       mode = "buffers",
-      separator_style = "slant",
+      separator_style = "thick",
       always_show_bufferline = true,
       show_buffer_close_icons = true,
       show_close_icon = false,
@@ -31,6 +31,23 @@ return {
         enabled = true,
         delay = 100,
         reveal = { "close" },
+      },
+    },
+    highlights = {
+      separator = {
+        bg = "NONE",
+      },
+      separator_selected = {
+        bg = "NONE",
+      },
+      separator_visible = {
+        bg = "NONE",
+      },
+      tab_separator = {
+        bg = "NONE",
+      },
+      tab_separator_selected = {
+        bg = "NONE",
       },
     },
   },

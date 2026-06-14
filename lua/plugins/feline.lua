@@ -101,6 +101,6 @@ return {
 			},
 		})
 
-		feline.winbar.setup()
+		-- feline.winbar.setup()
 	end,
 }

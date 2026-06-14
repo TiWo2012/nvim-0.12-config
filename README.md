@@ -20,7 +20,7 @@ Launch nvim. Once lazy.nvim finishes installing plugins, run `:Lazy sync` to upd
 - **Completions** — `nvim-cmp` with `cmp-nvim-lsp`, `cmp-path`, and `cmp-luasnip` sources
 - **Snippets** — `LuaSnip` with custom C/C++ snippets (header guard, main, for, struct, enum, etc.)
 - **Telescope** — fuzzy finder with `fzf-native`
-- **Bufferline** — `bufferline.nvim` with slant separators, numbered buffers, `[b`/`]b` navigation
+- **Bufferline** — `bufferline.nvim` with thick separators, numbered buffers, `[b`/`]b` navigation
 - **Which-key** — keybinding popup
 - **Statusline** — `feline.nvim` with mode, file info, git branch, LSP clients
 - **File explorer** — `neo-tree.nvim` (right sidebar)
