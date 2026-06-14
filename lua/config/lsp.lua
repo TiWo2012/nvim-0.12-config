@@ -58,24 +58,6 @@ vim.diagnostic.config({
 })
 
 -- =========================
--- Floating LSP UI
--- =========================
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover, {
-        border = "single",
-        focusable = true,
-    }
-)
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, {
-        border = "single",
-        focusable = true,
-    }
-)
-
--- =========================
 -- Keymaps
 -- =========================
 
@@ -84,7 +66,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local opts = { buffer = event.buf }
 
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "K", function()
+            local client = vim.lsp.get_client_by_id(event.data.client_id)
+            if not client then return end
+            local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
+            vim.lsp.buf_request(0, "textDocument/hover", params, function(_, result)
+                if not result then return end
+                local contents = result.contents
+                if not contents then return end
+                local lines = vim.lsp.util.convert_input_to_markdown_lines(contents, {})
+                vim.lsp.util.open_floating_preview(lines, "markdown", {
+                    border = "single",
+                })
+            end)
+        end, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
