@@ -8,8 +8,7 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "pyright",
-        "ts_ls",
+        "clangd",
       },
       automatic_enable = true,
     },
