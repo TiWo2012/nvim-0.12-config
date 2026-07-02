@@ -18,30 +18,30 @@ vim.api.nvim_create_autocmd("UIEnter", {
 
 -- helper function
 local function set_relative()
-    vim.opt.relativenumber = true
-    vim.opt.number = false
+  vim.opt.relativenumber = true
+  vim.opt.number = false
 end
 
 local function set_absolute()
-    vim.opt.relativenumber = false
-    vim.opt.number = true
+  vim.opt.relativenumber = false
+  vim.opt.number = true
 end
 
 -- autocmds
 vim.api.nvim_create_autocmd("InsertEnter", {
-    callback = set_absolute,
+  callback = set_absolute,
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
-    callback = set_relative,
+  callback = set_relative,
 })
 
 vim.api.nvim_create_autocmd("FocusLost", {
-    callback = set_absolute,
+  callback = set_absolute,
 })
 
 vim.api.nvim_create_autocmd("FocusGained", {
-    callback = set_relative,
+  callback = set_relative,
 })
 
 -- highlight trailing whitespace with listchars
@@ -50,12 +50,12 @@ vim.opt.listchars:append { trail = "·" }
 
 -- trim trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function()
-        local save_cursor = vim.fn.getpos(".")
-        vim.cmd([[%s/\s\+$//e]])
-        vim.fn.setpos(".", save_cursor)
-    end,
+  pattern = "*",
+  callback = function()
+    local save_cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos(".", save_cursor)
+  end,
 })
 
 -- splits
@@ -70,3 +70,9 @@ vim.opt.shiftwidth = 2     -- size of an indent
 vim.opt.tabstop = 2        -- how many spaces a tab counts for
 vim.opt.softtabstop = 2    -- backspace + editing behavior
 vim.opt.smartindent = true -- auto-indent new lines
+
+vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
+  callback = function()
+    vim.cmd("silent! wall")
+  end,
+})
